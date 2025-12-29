@@ -21,6 +21,18 @@ const createTable = async ()=>{
                 password VARCHAR(300) NOT NULL,
                 createdDate TIMESTAMP DEFAULT NOW()
             );
+            
+            CREATE TABLE IF NOT EXISTS brands(
+                id SERIAL PRIMARY KEY,
+                name VARCHAR(255) NOT NULL,
+                createdDate TIMESTAMP DEFAULT NOW()
+            );
+
+            CREATE TABLE IF NOT EXISTS categories(
+                id SERIAL PRIMARY KEY,
+                name VARCHAR(255) NOT NULL,
+                createdDate TIMESTAMP DEFAULT NOW()
+            );
         `)
         console.log("Table Hello created")
     } catch (error) {

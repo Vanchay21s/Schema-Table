@@ -1,3 +1,4 @@
+const { validationResult } = require("express-validator");
 
 const logger = (req, res, next) => {
   console.log(`${req.method} ${req.url}`);  
@@ -17,7 +18,16 @@ const errorHandler = (err, req, res, next) => {
     })
 }
 
+const handleValidation = (req, res, next) => {
+    const result = validationResult(req)
+    if(result.isEmpty){
+        next()
+    }
+    return res.status(401).json({ error: result.array() });
+}
+
 module.exports = {
     logger,
-    errorHandler
+    errorHandler,
+    handleValidation
 }
