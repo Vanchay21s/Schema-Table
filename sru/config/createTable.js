@@ -33,10 +33,23 @@ const createTable = async ()=>{
                 name VARCHAR(255) NOT NULL,
                 createdDate TIMESTAMP DEFAULT NOW()
             );
+            
+            CREATE TABLE IF NOT EXISTS products(
+                id SERIAL PRIMARY KEY,
+                barcode VARCHAR(300) NULL,
+                name VARCHAR(400) NULL,
+                price DECIMAL(10, 2) NOT NULL,
+                qty DECIMAL(10, 2) NULL,
+                by_category int NOT NULL,
+                by_brand int NOT NULL,
+                created_at TIMESTAMP DEFAULT NOW(),
+                FOREIGN KEY (by_category) REFERENCES categories(id),
+                FOREIGN KEY (by_brand) REFERENCES brands(id)
+            );
         `)
         console.log("Table Hello created")
     } catch (error) {
         console.log("Error creating Tables", error)
     }
 }
- module.exports = createTable
+module.exports = createTable

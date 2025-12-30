@@ -7,6 +7,8 @@ const { logger, errorHandler } = require("./sru/middleware/middleware");
 const authRouter = require("./sru/routes/authRoute");
 const bodyParser = require("body-parser");
 const userRouter = require("./sru/routes/userRoute");
+const testRouter = require("./sru/routes/testRou");
+const brandRouter = require("./sru/routes/brandRou");
 // ================
 
 
@@ -26,6 +28,8 @@ app.use(bodyParser.json())
 app.use(logger)
 app.use('/auth', authRouter)
 app.use('/user', userRouter)
+app.use('/category', testRouter)
+app.use('/brand', brandRouter)
 app.use(errorHandler)
 app.listen(port, ()=>{
     console.log(`Server running => http://localhost:${port}/`)
