@@ -1,7 +1,7 @@
 const express = require('express')
-const { getCategory } = require('../controller/test')
+const { getProductByFilter } = require('../controller/productCon')
 const testRouter = express() 
 
-testRouter.get("/", getCategory)
+testRouter.get("/", getProductByFilter)
 
 module.exports = testRouter

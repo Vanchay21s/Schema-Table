@@ -28,7 +28,7 @@ app.use(bodyParser.json())
 app.use(logger)
 app.use('/auth', authRouter)
 app.use('/user', userRouter)
-app.use('/category', testRouter)
+app.use('/product', testRouter)
 app.use('/brand', brandRouter)
 app.use(errorHandler)
 app.listen(port, ()=>{
